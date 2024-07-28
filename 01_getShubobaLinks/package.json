@@ -1,0 +1,25 @@
+{
+  "name": "app.get.getshubobalinks",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run exec",
+    "exec": "ts-node getShubobaLinks.ts"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "puppeteer-core": "^22.12.1"
+  },
+  "main": "getData.ts",
+  "devDependencies": {
+    "@types/node": "^17.0.14",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.12.0",
+    "typescript": "^4.5.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
