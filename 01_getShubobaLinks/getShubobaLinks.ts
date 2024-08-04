@@ -1,5 +1,5 @@
 /**
- * getLinks.ts
+ * getShubobaLinks.ts
  *
  * function：get all links form shuboba-profile
 **/
@@ -14,8 +14,7 @@ import { Scrape } from './class/Scrape0326'; // scraper
 // scraper
 const scraper = new Scrape();
 
-
-// 数字配列
+// number array
 const makeNumberRange = (start: number, end: number) => [...new Array(end - start).keys()].map(n => n + start);
 
 // main
@@ -25,7 +24,7 @@ const makeNumberRange = (start: number, end: number) => [...new Array(end - star
     let urlArray: string[] = [];
     // initialize
     await scraper.init();
-    // 収集ループ
+    // scraping loop
     for await (const i of makeNumberRange(1, 10)) {
       try {
         // filename

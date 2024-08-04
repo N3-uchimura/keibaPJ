@@ -1,5 +1,5 @@
 /**
- * getData.ts
+ * getShubobaData.ts
  *
  * function：get all data from urls
 **/
@@ -99,19 +99,19 @@ const listFiles = (): Promise<string[]> => {
 // main
 (async (): Promise<void> => {
   try {
-    // variables
+    // str variables
     let strArray: string[][] = [];
     // header
-    const sheetTitleArray: string[] = ['馬名', '生日', '生国', '毛色', '供用', '勝鞍', '父', '母', '母父', 'インブリード', '海外産駒勝鞍', '国内産駒勝鞍'];
+    const sheetTitleArray: string[] = ['horsename', 'birthday', 'country', 'color', 'service', 'win', 'father', 'mother', 'motherfather', 'inbreed', 'cropwin', 'cropwinnative'];
     // target selector
     const selectorArray: string[] = ['title', 'table tr:nth-child(1) td', 'table tr:nth-child(2) td', 'table tr:nth-child(3)  td', 'table tr:nth-child(4) td', 'table tr:nth-child(8) td', 'table tr:nth-child(12) td', 'table tr:nth-child(13) td', 'table tr:nth-child(14) td', 'table tr:nth-child(15) td', 'table tr:nth-child(23) td', 'table tr:nth-child(24) td'];
-    // urls
+    // links
     const linkArray: string[] = await readLines();
 
     // initialize
     await scraper.init();
 
-    // 数字配列
+    // number array
     const makeNumberRange = (start: number, end: number) => [...new Array(end - start).keys()].map(n => n + start);
 
     // counter
@@ -122,20 +122,20 @@ const listFiles = (): Promise<string[]> => {
       // goto shuboba-profile
       await scraper.doGo(url);
 
-      // 格納用
+      // horse header
       let myHorseObj: any = {
-        馬名: '', // shopname
-        生日: '', // genre
-        生国: '', // status
-        毛色: '', // budget
-        供用: '', // shopphone
-        勝鞍: '', // address
-        父: '', // business time
-        母: '', // holiday
-        母父: '', // seat
-        インブリード: '', // seat
-        海外産駒勝鞍: '', // seat
-        国内産駒勝鞍: '', // seat
+        horsename: '',
+        birthday: '',
+        country: '',
+        color: '',
+        service: '',
+        win: '',
+        father: '',
+        mother: '',
+        motherfather: '',
+        inbreed: '',
+        cropwin: '',
+        cropwinnative: '',
       };
       // loop in selectors
       for await (const i of makeNumberRange(0, 11)) {

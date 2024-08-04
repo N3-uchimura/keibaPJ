@@ -1,5 +1,5 @@
 /**
-/* UrlGetterKeiba.ts
+/* main.js
 /* UrlGetterKeiba - Getting horse url -
 **/
 

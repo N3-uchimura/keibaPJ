@@ -320,7 +320,7 @@ class Scrape {
         return new Promise(async (resolve, reject) => {
             try {
                 // detect page
-                const isSucceeded = await Scrape.page.$(element).then((res) => !!res);
+                const isSucceeded = await Scrape.page.$(element).then(res => !!res);
                 // resolved
                 resolve(isSucceeded);
             }

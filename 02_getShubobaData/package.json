@@ -1,10 +1,16 @@
 {
-  "name": "app.get.getdata",
+  "name": "numthree.com.getshubobadata",
+  "productName": "getShubobaData",
   "version": "1.0.0",
-  "private": true,
+  "description": "application for getshubobadata",
+  "main": "getShubobaData.ts",
   "scripts": {
-    "start": "npm run exec",
-    "exec": "ts-node getShubobaData.ts"
+    "start": "ts-node getShubobaData.ts"
+  },
+  "keywords": [],
+  "author": {
+    "name": "numthree-uchimura (https://github.com/N3-uchimura/)",
+    "email": "uchimura@numthree.net"
   },
   "dependencies": {
     "csv-parse": "^5.5.6",
@@ -15,7 +21,6 @@
     "puppeteer-core": "^22.12.1",
     "readline-sync": "^1.4.10"
   },
-  "main": "getData.ts",
   "devDependencies": {
     "@types/node": "^17.0.14",
     "@types/readline-sync": "^1.4.4",
@@ -23,8 +28,5 @@
     "tsconfig-paths": "^3.12.0",
     "typescript": "^4.5.5"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }

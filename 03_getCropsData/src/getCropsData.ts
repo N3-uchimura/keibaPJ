@@ -1,6 +1,6 @@
 /**
-/* main.ts
-/* ScrapingKeiba - Getting horse racing data. -
+/* getCropsData.ts
+/* getCropsData - Getting shuboba crops data. -
 **/
 
 "use strict";
@@ -20,12 +20,12 @@ const TURF_DIST_SELECTOR: string = `${BASE_SELECTOR} td:nth-child(20)`; // turf 
 const DIRT_DIST_SELECTOR: string = `${BASE_SELECTOR} td:nth-child(21)`; // dirt average distance
 
 //* Modules
-import { app, BrowserWindow, dialog } from 'electron'; // electron
+import { app, BrowserWindow, dialog, MessageBoxOptions } from 'electron'; // electron
 import * as fs from 'fs'; // fs
 import parse from 'csv-parse/lib/sync'; // csv parser
 import stringifySync from 'csv-stringify/lib/sync'; // csv stfingifier
 import iconv from 'iconv-lite'; // Ttext converter
-import { Scrape } from './class/myScraper'; // scraper
+import { Scrape } from './class/Scrape0326'; // scraper
 import { FileFilter } from 'electron/main'; // file filter
 
 //* interfaces
@@ -35,14 +35,6 @@ interface windowOption {
   height: number; // window height
   defaultEncoding: string; // default encode
   webPreferences: Object; // node
-}
-
-// dialog options
-interface dialogOption{
-  type: string;
-  title: string;
-  message: string;
-  detail: string;
 }
 
 // tmp records
@@ -79,11 +71,11 @@ interface csvHeaders {
 
 //* General variables
 // main window
-let mainWindow:any = null; 
+let mainWindow: any = null;
 // result array
-let resultArray: Object[][] = []; 
+let resultArray: Object[][] = [];
 // selector array
-const selectorArray: string[] = [TURF_SELECTOR, TURF_WIN_SELECTOR, DIRT_SELECTOR, DIRT_WIN_SELECTOR, TURF_DIST_SELECTOR, DIRT_DIST_SELECTOR]; 
+const selectorArray: string[] = [TURF_SELECTOR, TURF_WIN_SELECTOR, DIRT_SELECTOR, DIRT_WIN_SELECTOR, TURF_DIST_SELECTOR, DIRT_DIST_SELECTOR];
 // header array
 const headerObjArray: csvHeaders[] = [
   { key: 'a', header: 'horse' }, // horse name
@@ -121,7 +113,7 @@ app.on('ready', async () => {
       // success
       .then((res: string[]) => {
         // chosen filename
-        const filename:string = res[0];
+        const filename: string = res[0];
         // resolved
         resolve(filename);
       })
@@ -136,14 +128,14 @@ app.on('ready', async () => {
         reject();
         // close window
         mainWindow.close();
-    });
+      });
   });
 
   // file reading
   promise.then((name: string) => {
     try {
       // read file
-      fs.readFile(name, async(err: any, data: any) => {
+      fs.readFile(name, async (err: any, data: any) => {
         // error
         if (err) throw err;
 
@@ -162,10 +154,10 @@ app.on('ready', async () => {
           from_line: 2, // from line 2
         }
         // csv reading
-        const tmpRecords: csvRecords[] = await parse(str, recordOptions);
+        const tmpRecords: csvRecords[] = parse(str, recordOptions);
         // extract first column
-        const urls: string[] = await tmpRecords.map(item => item.urls);
-        const horses: string[] = await tmpRecords.map(item => item.horse);
+        const urls: string[] = tmpRecords.map(item => item.urls);
+        const horses: string[] = tmpRecords.map(item => item.horse);
 
         // loop words
         for (let i: number = 0; i < urls.length; i++) {
@@ -182,7 +174,7 @@ app.on('ready', async () => {
           // get data
           for (const sl of selectorArray) {
             try {
-              if (await scraper.detectPage('.race_table_01')) {
+              if (await scraper.doCheckSelector('.race_table_01')) {
                 // wait for selector
                 await scraper.doWaitSelector('.race_table_01', 1000);
                 // acquired data
@@ -236,7 +228,7 @@ app.on('ready', async () => {
 });
 
 // choose csv data
-const getCsvData = (): Promise<string[]>  => {
+const getCsvData = (): Promise<string[]> => {
   return new Promise((resolve, reject) => {
     // options
     const dialogOptions: csvDialog = {
@@ -255,7 +247,7 @@ const getCsvData = (): Promise<string[]>  => {
         // resolved
         resolve(result.filePaths);
 
-      // no file
+        // no file
       } else {
         // rejected
         reject(result.canceled);
@@ -271,11 +263,11 @@ const getCsvData = (): Promise<string[]>  => {
 }
 
 // show dialog
-const showDialog = (title: string, message: string, detail: any, flg:boolean = false):void => {
+const showDialog = (title: string, message: string, detail: any, flg: boolean = false): void => {
   try {
     // dialog options
-    const options:dialogOption = {
-      type: '',
+    const options: MessageBoxOptions = {
+      type: 'none',
       title: title,
       message: message,
       detail: detail.toString(),
@@ -299,11 +291,11 @@ const showDialog = (title: string, message: string, detail: any, flg:boolean = f
 }
 
 // outuput error
-const outErrorMsg = (e: unknown, no: number):void => {
+const outErrorMsg = (e: unknown, no: number): void => {
 
   // if type is error
   if (e instanceof Error) {
     // error
     console.log(`${no}: ${e.message}`);
-  }  
+  }
 }

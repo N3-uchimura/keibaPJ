@@ -28,7 +28,7 @@ const DEF_USER_AGENT: string =
 import * as fs from "fs"; // fs
 import * as path from "path"; // path
 import { setTimeout } from 'node:timers/promises'; // wait for seconds
-import puppeteer from "puppeteer"; // Puppeteer for scraping
+import puppeteer from "puppeteer-core"; // Puppeteer for scraping
 
 //* Interfaces
 // puppeteer options

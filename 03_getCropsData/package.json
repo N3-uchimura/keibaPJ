@@ -1,16 +1,18 @@
 {
-  "name": "test.com.scrapingkeiba",
+  "name": "numthree.com.getcropsdata",
+  "productName": "getcropsdata",
   "version": "1.0.0",
-  "description": "getting horse racing data.",
-  "main": "main.ts",
+  "description": "getting shuboba crops data.",
+  "main": "getCropsData.ts",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && electron ./dist/main.js",
-    "build:mac": "electron-builder --mac --x64",
-    "build:win": "electron-builder --win --x64"
+    "start": "npm run build && chcp 65001 && electron ./build/getCropsData.js",
+    "build:win": "tsc && chcp 65001 && electron-packager . --overwrite"
   },
-  "author": "Koichi Uchimura",
-  "license": "ISC",
+  "author": {
+    "name": "numthree-uchimura (https://github.com/N3-uchimura/)",
+    "email": "uchimura@numthree.net"
+  },
   "dependencies": {
     "csv-parse": "^4.16.0",
     "csv-stringify": "^5.6.5",
@@ -18,17 +20,17 @@
     "fs": "^0.0.1-security",
     "iconv-lite": "^0.6.3",
     "path": "^0.12.7",
-    "puppeteer-core": "^10.2.0"
+    "puppeteer-core": "^22.15.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.31",
-    "electron": "^13.6.9",
-    "electron-builder": "^22.11.7",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },
   "build": {
-    "appId": "jp.scrape.app1",
+    "appId": "numthree.com.getcropsdata",
     "files": [
       "!**/node_modules/*"
     ],
@@ -43,5 +45,6 @@
     "mac": {
       "target": "dmg"
     }
-  }
+  },
+  "license": "ISC"
 }

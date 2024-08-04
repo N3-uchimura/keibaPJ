@@ -1,5 +1,5 @@
 /**
-/* UrlGetterKeiba.ts
+/* main.js
 /* UrlGetterKeiba - Getting horse url -
 **/
 "use strict";
@@ -218,4 +218,4 @@ electron_1.app.on('ready', async () => {
         showDialog('export error', 'error occured when exporting csv.', e, true);
     }
 });
-//# sourceMappingURL=getNetkeibaUrls.js.map
+//# sourceMappingURL=UrlGetterKeiba.js.map
