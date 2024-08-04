@@ -18,7 +18,7 @@ import * as fs from 'fs'; // fs
 import parse from 'csv-parse/lib/sync'; // csv parser
 import stringifySync from 'csv-stringify/lib/sync'; // csv stfingifier
 import iconv from 'iconv-lite'; // text converter
-import { Scrape } from './class/myScraper'; // custom Scraper
+import { Scrape } from './class/Scrape0804'; // custom Scraper
 import { FileFilter } from 'electron/main'; // filefilter
 
 //* Interfaces
@@ -236,7 +236,7 @@ app.on('ready', async () => {
         columns: headerObjArray,
       }
       // export csv
-      const csvString: string = await stringifySync(resultArray, stringifyOptions);
+      const csvString: string = stringifySync(resultArray, stringifyOptions);
       // format date
       const formattedDate: string = (new Date).toISOString().replace(/[^\d]/g, "").slice(0, 14);
 

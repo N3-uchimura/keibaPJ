@@ -3,7 +3,7 @@
  *
  * class：Scrape
  * function：scraping site
- * updated: 2024/03/26
+ * updated: 2024/08/04
  **/
 
 // constants

@@ -9,7 +9,7 @@ const FOREIGN_URL: string = 'a-z'; // target url
 
 // read modules
 import * as fs from 'fs'; // fs
-import { Scrape } from './class/Scrape0326'; // scraper
+import { Scrape } from './class/Scrape0804'; // scraper
 
 // scraper
 const scraper = new Scrape();

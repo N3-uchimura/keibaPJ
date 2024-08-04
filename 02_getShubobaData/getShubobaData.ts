@@ -10,7 +10,7 @@
 import * as fs from 'fs'; // fs
 import readline from 'readline'; // readline
 import readlineSync from 'readline-sync'; // readsync
-import { Scrape } from './class/Scrape0326'; // scraper
+import { Scrape } from './class/Scrape0804'; // scraper
 import CSV from './class/Csv0707'; // aggregator
 
 // scraper
