@@ -93,7 +93,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`1: ${e.message}`);
+          console.log(`init: ${e.message}`);
           // reject
           reject();
         }
@@ -112,7 +112,26 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`2: ${e.message}`);
+          console.log(`getTitle: ${e.message}`);
+          // reject
+          reject(e.message);
+        }
+      }
+    });
+  }
+
+  // get a href
+  getHref(elem: string): Promise<string> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // resolved
+        resolve(await Scrape.page.$eval(elem, (elm: any) => elm.href));
+
+      } catch (e: unknown) {
+        // if type is error
+        if (e instanceof Error) {
+          // error
+          console.log(`getHref: ${e.message}`);
           // reject
           reject(e.message);
         }
@@ -133,7 +152,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`3: ${e.message}`);
+          console.log(`pressEnter: ${e.message}`);
           // reject
           reject();
         }
@@ -160,9 +179,30 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`4: ${e.message}`);
+          console.log(`doGo: ${e.message}`);
           // reject
           reject();
+        }
+      }
+    });
+  }
+
+  // goback
+  doGoBack(): Promise<void> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // go back
+        await Scrape.page.goBack();
+        // resolved
+        resolve();
+
+      } catch (e: unknown) {
+        // if type is error
+        if (e instanceof Error) {
+          // error
+          console.log(`doGoBack: ${e.message}`);
+          // reject
+          reject(e.message);
         }
       }
     });
@@ -181,7 +221,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`5: ${e.message}`);
+          console.log(`doClick: ${e.message}`);
           // reject
           reject();
         }
@@ -202,7 +242,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`6: ${e.message}`);
+          console.log(`doType: ${e.message}`);
           // reject
           reject();
         }
@@ -223,7 +263,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`7: ${e.message}`);
+          console.log(`doClear: ${e.message}`);
           // reject
           reject();
         }
@@ -244,7 +284,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`8: ${e.message}`);
+          console.log(`doSelect: ${e.message}`);
           // reject
           reject();
         }
@@ -265,7 +305,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`9: ${e.message}`);
+          console.log(`doScreenshot: ${e.message}`);
           // reject
           reject();
         }
@@ -287,7 +327,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`10: ${e.message}`);
+          console.log(`mouseWheel: ${e.message}`);
           // reject
           reject();
         }
@@ -336,7 +376,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`11: ${e.message}`);
+          console.log(`doSingleEval: ${e.message}`);
           // reject
           reject(e.message);
         }
@@ -370,7 +410,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`12: ${e.message}`);
+          console.log(`doMultiEval: ${e.message}`);
           // reject
           reject(e.message);
         }
@@ -390,7 +430,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`13: ${e.message}`);
+          console.log(`doWaitFor: ${e.message}`);
           // reject
           reject();
         }
@@ -417,7 +457,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`14: ${e.message}`);
+          console.log(`doWaitSelector: ${e.message}`);
           // reject
           reject();
         }
@@ -437,7 +477,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`15: ${e.message}`);
+          console.log(`doWaitForNav: ${e.message}`);
           // reject
           reject();
         }
@@ -458,7 +498,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`16: ${e.message}`);
+          console.log(`doCheckSelector: ${e.message}`);
           // reject
           reject(false);
         }
@@ -479,7 +519,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`17: ${e.message}`);
+          console.log(`doClose: ${e.message}`);
           // reject
           reject();
         }
@@ -500,7 +540,7 @@ export class Scrape {
         // if type is error
         if (e instanceof Error) {
           // error
-          console.log(`18: ${e.message}`);
+          console.log(`doReload: ${e.message}`);
           // reject
           reject();
         }
@@ -540,7 +580,7 @@ const getChromePath = (): string => {
     // error
   } else {
     // error logging
-    console.log('16: no chrome path error');
+    console.log('getChromePath: no chrome path error');
     return '';
   }
 }

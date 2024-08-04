@@ -5,7 +5,7 @@
   "description": "getting shuboba crops data.",
   "main": "getCropsData.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && chcp 65001",
     "start": "npm run build && chcp 65001 && electron ./build/getCropsData.js"
   },
   "author": {
