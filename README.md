@@ -2,7 +2,7 @@
 
 ### Projects
 1. getShubobaLinks  
-Get all Shuboba links from "種牡馬Profile(http://keiba.no.coocan.jp)"  
+Get all Shuboba links from "ShubobaProfile(http://keiba.no.coocan.jp)"  
 result url list is written out to txt  
 
 2. getShubobaData  
