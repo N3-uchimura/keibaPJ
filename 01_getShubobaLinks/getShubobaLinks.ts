@@ -4,6 +4,8 @@
  * function：get all links form shuboba-profile
 **/
 
+'use strict';
+
 const BASE_URL: string = 'http://keiba.no.coocan.jp/data/_index_';
 const FOREIGN_URL: string = 'a-z'; // target url
 
