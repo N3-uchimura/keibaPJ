@@ -6,6 +6,8 @@
  * updated: 2024/07/07
  **/
 
+'use strict';
+
 // define modules
 import { parse } from 'csv-parse/sync'; // csv parser
 import { promises } from "fs"; // file system
